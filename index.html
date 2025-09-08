@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio de desarrollador web: proyectos, experiencia y contacto." />
+  <title>Alvarocormi — Portfolio</title>
+  <!-- TailwindCSS CDN (modo Play) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", "sans-serif"] },
+          colors: { brand: { DEFAULT: '#4f46e5', soft: '#6366f1' } }
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* Suaves animaciones */
+    .fade-in { animation: fade .6s ease both; }
+    @keyframes fade { from { opacity: 0; transform: translateY(6px);} to { opacity: 1; transform: translateY(0);} }
+  </style>
+</head>
+<body class="bg-white text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans">
+  <!-- Barra superior -->
+  <header class="sticky top-0 z-30 backdrop-blur bg-white/70 dark:bg-slate-950/70 border-b border-slate-200/50 dark:border-slate-800/50">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#inicio" class="flex items-center gap-2 font-semibold tracking-tight">
+        <!-- Logo simple -->
+        <span class="inline-flex h-7 w-7 items-center justify-center rounded-xl bg-brand/10 text-brand">A</span>
+        <span>Alvarocormi</span>
+      </a>
+      <nav class="hidden sm:flex items-center gap-6 text-sm">
+        <a href="#proyectos" class="hover:text-brand">Proyectos</a>
+        <a href="#sobre-mi" class="hover:text-brand">Sobre mí</a>
+        <a href="#contacto" class="hover:text-brand">Contacto</a>
+        <a href="./alvaroCorderoCV.pdf" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-brand text-white hover:bg-brand-soft transition" target="_blank">
+          <!-- Icono documento -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.5 14.25v2.25A2.25 2.25 0 0 1 17.25 18.75H6.75A2.25 2.25 0 0 1 4.5 16.5V7.5A2.25 2.25 0 0 1 6.75 5.25h5.379a2.25 2.25 0 0 1 1.591.659l3.621 3.621a2.25 2.25 0 0 1 .659 1.591V12"/></svg>
+          CV
+        </a>
+        <button id="themeToggle" class="ml-2 p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800" aria-label="Cambiar tema">
+          <!-- Icono sol/luna -->
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" viewBox="0 0 24 24" fill="currentColor"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 14.32l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM1 13h3v-2H1v2zm19 0h3v-2h-3v2zM11 1h2v3h-2V1zm0 19h2v3h-2v-3zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zM18.36 4.22l1.41-1.41-1.79-1.8-1.41 1.42 1.79 1.79z"/><path d="M12 7a5 5 0 100 10 5 5 0 000-10z"/></svg>
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M21.64 13a9 9 0 01-11.31 8.94A9 9 0 1011.64 3 7 7 0 0021.64 13z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="max-w-6xl mx-auto px-4 py-16 sm:py-24">
+    <div class="grid md:grid-cols-2 items-center gap-10">
+      <div class="fade-in">
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">Hola, soy <span class="text-brand">Alvarocormi</span>.<br class="hidden sm:block"> Desarrollador Web.</h1>
+        <p class="mt-4 text-slate-600 dark:text-slate-300 max-w-prose">Construyo interfaces limpias y rápidas con HTML, CSS y JavaScript. Aquí encontrarás una selección de mis proyectos, mi experiencia y cómo contactar conmigo.</p>
+        <div class="mt-6 flex flex-wrap items-center gap-3">
+          <a href="#proyectos" class="px-4 py-2 rounded-xl bg-brand text-white hover:bg-brand-soft transition">Ver proyectos</a>
+          <a href="mailto:alvarocormin@gmail.com" class="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-brand hover:text-brand transition">Escríbeme</a>
+          <a href="./alvaroCorderoCV.pdf" class="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 hover:border-brand hover:text-brand transition">Descargar CV</a>
+        </div>
+        <!-- Redes -->
+        <div class="mt-6 flex items-center gap-4">
+          <a href="https://github.com/alvarocormi" class="hover:text-brand" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.427 2.865 8.18 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.607.069-.607 1.004.071 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.833.091-.647.35-1.088.636-1.338-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.338 1.909-1.296 2.748-1.026 2.748-1.026.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.337 4.695-4.565 4.944.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.749 0 .267.18.578.688.48A10.019 10.019 0 0022 12.017C22 6.484 17.523 2 12 2z" clip-rule="evenodd"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/álvaro-cordero-miñambres-2a1893233álvaro-cordero-miñambres-2a1893233" class="hover:text-brand" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6" fill="currentColor"><path d="M20.451 20.452h-3.554v-5.569c0-1.328-.025-3.036-1.85-3.036-1.853 0-2.136 1.448-2.136 2.944v5.661H9.357V9h3.414v1.561h.048c.476-.9 1.636-1.85 3.365-1.85 3.598 0 4.262 2.368 4.262 5.448v6.293zM5.337 7.433a2.063 2.063 0 11.002-4.127 2.063 2.063 0 01-.002 4.127zM7.114 20.452H3.56V9h3.554v11.452z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="fade-in md:justify-self-end">
+        <!-- Avatar / mockup -->
+        <div class="relative">
+          <div class="absolute -inset-2 rounded-3xl bg-gradient-to-tr from-brand/20 to-brand/0 blur"></div>
+          <img src="./img/05ef435d-0a76-4b22-bffd-28aade041ef4.jpg" alt="Foto de perfil" class="relative rounded-3xl w-full max-w-md ring-1 ring-slate-200/50 dark:ring-slate-800/60 shadow-2xl" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Proyectos -->
+  <section id="proyectos" class="max-w-6xl mx-auto px-4 py-12">
+    <div class="flex items-end justify-between gap-4">
+      <h2 class="text-3xl sm:text-4xl font-extrabold">Proyectos</h2>
+      <a href="https://github.com/alvarocormi?tab=repositories" class="text-sm hover:text-brand" target="_blank">Ver todo en GitHub →</a>
+    </div>
+    <p class="mt-2 text-slate-600 dark:text-slate-300">Una selección reciente. Añade o quita tarjetas fácilmente.</p>
+
+    <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Tarjeta proyecto -->
+      <article class="group rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition bg-white dark:bg-slate-900">
+        <img src="./img/ChatGPT Image 8 sept 2025, 19_13_01.png" alt="Tienda Online" class="h-40 w-full object-cover" />
+        <div class="p-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-lg">Tienda Online</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-brand/10 text-brand">Java</span>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2">Flujo completo de compra: listado de productos, carrito interactivo y validación de procesos.</p>
+          <div class="mt-3 flex gap-3">
+            <a href="#" class="text-sm hover:text-brand" target="_blank">Código</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="group rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition bg-white dark:bg-slate-900">
+        <img src="img/Image 8 sept 2025, 19_13_01.png" alt="EselMind" class="h-40 w-full object-cover" />
+        <div class="p-4">
+          <div class="flex items-center justify-between">
+            <h3 class="font-semibold text-lg">Eselmind</h3>
+            <span class="text-xs px-2 py-0.5 rounded-full bg-brand/10 text-brand">Wordpress</span>
+          </div>
+          <p class="mt-2 text-sm text-slate-600 dark:text-slate-300 line-clamp-2">Pagina web sobre cursos dedicados al desarrollo personal</p>
+          <div class="mt-3 flex gap-3">
+            <a href="https://eselmind.academy" class="text-sm hover:text-brand" target="_blank">Demo</a>
+            <a href="#" class="text-sm hover:text-brand">Código</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Sobre mí / habilidades -->
+  <section id="sobre-mi" class="max-w-6xl mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold">Sobre mí</h2>
+        <p class="mt-3 text-slate-600 dark:text-slate-300">Soy desarrollador web con foco en interfaces limpias, accesibles y de alto rendimiento. Disfruto convertir ideas en productos funcionales. Estoy abierto a colaboraciones y oportunidades.</p>
+        <ul class="mt-4 space-y-2 text-slate-700 dark:text-slate-300">
+          <li>• Experiencia: HTML, CSS, JavaScript, React, Wordpress...</li>
+          <li>• Intereses: Web3, rendimiento, UX.</li>
+          <li>• Ubicación: España (remoto / híbrido).</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-semibold text-xl">Habilidades</h3>
+        <div class="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <span class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">HTML5</span>
+          <span class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">CSS3</span>
+          <span class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">JavaScript</span>
+          <span class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">React</span>
+          <span class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">SpringBoot</span>
+          <span class="px-3 py-2 rounded-xl bg-slate-100 dark:bg-slate-800">Java</span>
+        </div>
+        <a href="./curriculum.pdf" class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-brand text-white hover:bg-brand-soft transition">Descargar CV</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="max-w-6xl mx-auto px-4 py-12">
+    <div class="rounded-3xl border border-slate-200 dark:border-slate-800 p-6 sm:p-8 bg-white dark:bg-slate-900">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold">¿Hablamos?</h2>
+          <p class="mt-2 text-slate-600 dark:text-slate-300">Cuéntame tu idea o proyecto. Suelo responder en 24h.</p>
+          <div class="mt-4 text-sm">
+            <p>📧 <a href="mailto:alvarocormin@gmail.com" class="hover:text-brand">alvarocormin@gmail.com</a></p>
+            <p>🔗 <a href="https://www.linkedin.com/in/álvaro-cordero-miñambres-2a1893233" class="hover:text-brand">LinkedIn</a> · <a href="https://github.com/alvarocormi" class="hover:text-brand">GitHub</a></p>
+          </div>
+        </div>
+        <form class="space-y-3" onsubmit="event.preventDefault(); alert('¡Gracias! Me pondré en contacto pronto.'); this.reset();">
+          <div>
+            <label class="text-sm">Nombre</label>
+            <input required class="mt-1 w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand/50" />
+          </div>
+          <div>
+            <label class="text-sm">Email</label>
+            <input type="email" required class="mt-1 w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand/50" />
+          </div>
+          <div>
+            <label class="text-sm">Mensaje</label>
+            <textarea required rows="4" class="mt-1 w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand/50"></textarea>
+          </div>
+          <button class="w-full px-4 py-2 rounded-xl bg-brand text-white hover:bg-brand-soft transition">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 text-center text-sm text-slate-500">
+    © <span id="year"></span> Alvarocormi — Hecho con HTML, Tailwind y 💙
+  </footer>
+
+  <script>
+    // Año automático
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Tema oscuro automático según preferencia + toggle manual (persistente)
+    const root = document.documentElement;
+    const preferredDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      saved === 'dark' ? root.classList.add('dark') : root.classList.remove('dark');
+    } else if (preferredDark) {
+      root.classList.add('dark');
+    }
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      root.classList.toggle('dark');
+      localStorage.setItem('theme', root.classList.contains('dark') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
