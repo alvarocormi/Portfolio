@@ -170,7 +170,7 @@
             <p>🔗 <a href="https://www.linkedin.com/in/álvaro-cordero-miñambres-2a1893233" class="hover:text-brand">LinkedIn</a> · <a href="https://github.com/alvarocormi" class="hover:text-brand">GitHub</a></p>
           </div>
         </div>
-        <form class="space-y-3" onsubmit="event.preventDefault(); alert(msg(lang,'sent')); this.reset();">
+        <form id="contactForm" class="space-y-3">
           <div>
             <label class="text-sm" data-i18n="formName">Nombre</label>
             <input name="nombre" required class="mt-1 w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand/50" />
@@ -183,7 +183,10 @@
             <label class="text-sm" data-i18n="formMessage">Mensaje</label>
             <textarea name="mensaje" required rows="4" class="mt-1 w-full rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand/50"></textarea>
           </div>
-          <button class="w-full px-4 py-2 rounded-xl bg-brand text-white hover:bg-brand-soft transition" data-i18n="formSend">Enviar</button>
+          <!-- Honeypot contra bots -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <button id="formSubmit" class="w-full px-4 py-2 rounded-xl bg-brand text-white hover:bg-brand-soft transition" data-i18n="formSend">Enviar</button>
+          <p id="formStatus" class="text-sm mt-2"></p>
         </form>
       </div>
     </div>
@@ -245,6 +248,9 @@
         formEmail: 'Email',
         formMessage: 'Mensaje',
         formSend: 'Enviar',
+        formSending: 'Enviando…',
+        formSent: '¡Mensaje enviado! Gracias, te responderé pronto.',
+        formError: 'Error al enviar. Prueba de nuevo en unos minutos.',
         footer: 'Alvarocormi — Hecho con HTML, Tailwind y 💙'
       },
       en: {
@@ -279,15 +285,14 @@
         formEmail: 'Email',
         formMessage: 'Message',
         formSend: 'Send',
+        formSending: 'Sending…',
+        formSent: 'Message sent! Thanks, I will get back to you soon.',
+        formError: 'Error sending. Please try again in a few minutes.',
         footer: 'Alvarocormi — Built with HTML, Tailwind & 💙'
       }
     };
 
-    const msgMap = {
-      es: { sent: '¡Mensaje enviado! Gracias, te responderé pronto.' },
-      en: { sent: 'Message sent! Thanks, I will get back to you soon.' }
-    };
-    function msg(lang, key){ return (msgMap[lang] && msgMap[lang][key]) || key; }
+        function msg(lang, key){ return (msgMap[lang] && msgMap[lang][key]) || key; }
 
     // idioma inicial: si el navegador empieza por "es" usa ES, si no EN (y recuerda la última elección)
     let lang = localStorage.getItem('lang') || (navigator.language?.toLowerCase().startsWith('es') ? 'es' : 'en');
@@ -314,6 +319,43 @@
 
     // Aplica traducciones al cargar
     applyTranslations(lang);
+
+    // ===== Formulario funcional con Formspree =====
+    // 1) Crea tu endpoint en https://formspree.io, copia el ID (ej: https://formspree.io/f/mjvnewid)
+    const FORM_ENDPOINT = 'https://formspree.io/f/xovnraod'; // <-- Pega aquí tu endpoint
+
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('formSubmit');
+    const statusEl = document.getElementById('formStatus');
+
+    function t(key){ return (translations[lang] && translations[lang][key]) || key; }
+
+    if (form && submitBtn && statusEl) {
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        statusEl.textContent = '';
+        submitBtn.disabled = true;
+        submitBtn.textContent = t('formSending');
+        try {
+          const formData = new FormData(form);
+          const res = await fetch(FORM_ENDPOINT, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+          if (res.ok) {
+            form.reset();
+            statusEl.className = 'text-sm mt-2 text-emerald-600';
+            statusEl.textContent = t('formSent');
+          } else {
+            statusEl.className = 'text-sm mt-2 text-rose-600';
+            statusEl.textContent = t('formError');
+          }
+        } catch (err) {
+          statusEl.className = 'text-sm mt-2 text-rose-600';
+          statusEl.textContent = t('formError');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = t('formSend');
+        }
+      });
+    }
   </script>
 </body>
 </html>
